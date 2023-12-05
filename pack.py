@@ -2,9 +2,9 @@ import os
 import json
 from datetime import datetime
 
-version = "0.0.1"
-stage = "dev"
-revision = "0000000"
+version = "1.0.0"
+stage = "beta"
+revision: str
 with os.popen("git rev-parse --short=7 HEAD") as f:
     revision = f.readline().strip()
 

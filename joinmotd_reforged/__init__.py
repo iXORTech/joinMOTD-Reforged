@@ -6,7 +6,7 @@ from mcdreforged.api.all import *
 
 from joinmotd_reforged.config import Config
 from joinmotd_reforged.server_info import ServerInfo
-from joinmotd_reforged.utils.version_utils import get_version
+from joinmotd_reforged.utils.version_utils import get_version, get_build_date
 
 MOTD_PREFIX = '!!motd'
 SERVER_LIST_PREFIX = '!!server'
@@ -100,7 +100,8 @@ def on_load(server: PluginServerInterface, old):
     server.logger.info("==========================================================")
     server.logger.info("joinMOTD-Reforged is loaded!")
     plugin_version = get_version()
-    server.logger.info(f"Version: {plugin_version}")
+    plugin_build_date = get_build_date()
+    server.logger.info(f"Version: {plugin_version} (Built on {plugin_build_date})")
     if "DEV" in plugin_version or "Alpha" in plugin_version or "Beta" in plugin_version:
         server.logger.info("§cTHIS IS IN EXPERIMENTAL STAGE, DO NOT USE IN PRODUCTION ENVIRONMENT!")
     elif "Release Candidate" in plugin_version:
