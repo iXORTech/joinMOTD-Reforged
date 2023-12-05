@@ -1,0 +1,50 @@
+name: Build official release version and release it
+
+on:
+  push:
+    tags:
+      - '!.*v[0-9]+\.[0-9]+\.[0-9]+.*'
+      - 'v[0-9]+\.[0-9]+\.[0-9]+'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Python version
+        run: python --version
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+      - name: Pack MCDR Plugin
+        run: python3 pack.py
+      - name: Get Tag
+        uses: mad9000/actions-find-and-replace-string@3
+        id: gettag
+        with:
+          source: ${{ github.ref }}
+          find: 'refs/tags/'
+          replace: ''
+      - name: Get Version Number
+        uses: mad9000/actions-find-and-replace-string@3
+        id: getversion
+        with:
+          source: ${{ steps.gettag.outputs.value }}
+          find: 'v'
+          replace: ''
+      - name: Get short SHA
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      - name: SHA to upper case
+        id: sha
+        uses: ASzc/change-string-case-action@v6
+        with:
+          string: ${{ env.SHORT_SHA }}
+      - name: Release
+        uses: ncipollo/release-action@v1.13.0
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          name: "Version ${{ steps.getversion.outputs.value }} (${{ steps.sha.outputs.uppercase }})"
+          artifacts: "build/distributions/*.mcdr"
+          bodyFile: "RELEASE_NOTE.md"
+          prerelease: false
