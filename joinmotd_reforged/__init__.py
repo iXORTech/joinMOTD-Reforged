@@ -1,10 +1,11 @@
 import os
+from datetime import datetime
 from typing import Any, Callable, Union
 
 from mcdreforged.api.all import *
-from datetime import datetime
 
 from joinmotd_reforged.config import Config
+from joinmotd_reforged.server_info import ServerInfo
 from joinmotd_reforged.utils.version_utils import get_version
 
 MOTD_PREFIX = '!!motd'
@@ -40,19 +41,30 @@ def get_day(server: ServerInterface) -> str:
         return '?'
 
 
-def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]], Any]):
+def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]], Any], player=None):
     """
     Display MOTD to the user
     """
-    reply('§7=======§r Welcome back to §e{}§7 =======§r'.format(config.server_name))
+    player = player if player else 'Console'
+    reply('§7=======§r §6{}§r, welcome back to §9{}§r! §7=======§r'.format(player, config.current_server_name))
     reply('The server is running for §e{}§r days'.format(get_day(server)))
+    display_server_list(reply)
 
 
-def display_server_list(server: ServerInterface, reply: Callable[[Union[str, RTextBase]], Any]):
+def display_server_list(reply: Callable[[Union[str, RTextBase]], Any]):
     """
     Display Server List to the user
     """
-    pass
+    reply('§7-----------------§r Server List §7-----------------§r')
+
+    messages = []
+    for server in config.server_list:
+        command = '/server {}'.format(server.name)
+        hover_text = command
+        if server.description is not None:
+            hover_text = server.description + '\n' + command
+        messages.append(RText('[{}]'.format(server.name)).h(hover_text).c(RAction.run_command, command))
+    reply(RTextBase.join(' ', messages))
 
 
 def register_commands(server: PluginServerInterface):
@@ -73,11 +85,11 @@ def register_commands(server: PluginServerInterface):
 
     server.register_command(
         get_literal_node(MOTD_PREFIX)
-        .runs(lambda src: display_motd(src.get_server(), src.reply))
+        .runs(lambda src: display_motd(src.get_server(), src.reply, src.player if src.is_player else None))
         .then(get_literal_node('reload').runs(load_config))
     )
     server.register_command(
-        get_literal_node(SERVER_LIST_PREFIX).runs(lambda src: display_server_list(src.get_server(), src.reply))
+        get_literal_node(SERVER_LIST_PREFIX).runs(lambda src: display_server_list(src.reply))
     )
 
 
