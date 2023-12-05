@@ -4,17 +4,15 @@ import re
 from mcdreforged.api.all import PluginServerInterface, ServerInterface
 
 server: PluginServerInterface = ServerInterface.get_instance().as_plugin_server_interface()
-version_properties = None
 
 
 def load_version_properties():
-    global version_properties
     with server.open_bundled_file(f"joinmotd_reforged/version.json") as f:
-        version_properties = json.load(f)
+        return json.load(f)
 
 
 def get_version_property(value: str) -> str:
-    return version_properties[value]
+    return load_version_properties()[value]
 
 
 def get_version() -> str:
