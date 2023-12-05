@@ -1,0 +1,8 @@
+# IntelliJ Platform
+.idea/
+
+# MCDR Packed Plugin
+*.mcdr
+
+# macOS File System
+.DS_Store

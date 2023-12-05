@@ -7,7 +7,7 @@ server: PluginServerInterface = ServerInterface.get_instance().as_plugin_server_
 
 
 def load_version_properties():
-    with server.open_bundled_file(f"joinmotd_reforged/version.json") as f:
+    with server.open_bundled_file(f"version.json") as f:
         return json.load(f)
 
 

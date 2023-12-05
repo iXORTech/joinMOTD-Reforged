@@ -10,5 +10,8 @@
 		"iXOR Technology",
     "Qian Qian \"Cubik\" (Cubik65536) <cubik65536@cubik65536.top>"
 	],
-	"link": "https://github.com/iXORTech/joinMOTD-Reforged"
+	"link": "https://github.com/iXORTech/joinMOTD-Reforged",
+    "resources": [
+		"version.json"
+	]
 }

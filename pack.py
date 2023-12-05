@@ -18,7 +18,7 @@ version_properties = {
 }
 
 version_properties_obj = json.dumps(version_properties)
-version_properties_file = "joinmotd_reforged/version.json"
+version_properties_file = "version.json"
 
 with open(version_properties_file, "w") as f:
     f.write(version_properties_obj)
@@ -27,7 +27,7 @@ with open(version_properties_file, "w") as f:
 project_dir = os.getcwd()
 
 os.chdir(f"{project_dir}")
-os.system("mcdreforged pack -o build/distributions")
+os.system("mcdreforged pack -o build/distributions --ignore-file .mcdrignore")
 
 os.chdir(f"{project_dir}/build/distributions")
 if stage == "dev" or stage == "alpha" or stage == "beta" or stage == "rc":
