@@ -1,4 +1,4 @@
-from typing import List, Optional, Union
+from typing import Dict, List, Optional, Union
 
 from mcdreforged.api.all import Serializable, ServerInterface
 
@@ -21,6 +21,12 @@ class Config(Serializable):
         ServerInfo(name="creative", description="Creative Server"),
         ServerInfo(name="mirror", description="Mirror Server")
     ]
+
+    permission: Dict[str, int] = {
+        'motd': 0,
+        'server': 0,
+        'reload': 3
+    }
 
     start_day: Optional[str] = None
     daycount_plugin_ids: List[str] = [
