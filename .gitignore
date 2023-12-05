@@ -1,6 +1,9 @@
 # IntelliJ Platform
 .idea/
 
+# Build Directory
+build/distributions/
+
 # MCDR Packed Plugin
 *.mcdr
 
