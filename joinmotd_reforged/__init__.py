@@ -8,6 +8,9 @@ from joinmotd_reforged.config import Config
 from joinmotd_reforged.utils.version_utils import get_version
 
 COMMAND_PREFIX = '!!joinMOTD'
+MOTD_PREFIX = '!!motd'
+SERVER_LIST_PREFIX = '!!server'
+
 config: Config
 ConfigFilePath = os.path.join('config', 'joinMOTD-Reforged.json')
 
@@ -18,7 +21,7 @@ def get_day(server: ServerInterface) -> str:
         now = datetime.now()
         output = now - startday
         return str(output.days)
-    except:
+    except Exception:
         pass
 
     for pid in config.daycount_plugin_ids:
@@ -29,7 +32,7 @@ def get_day(server: ServerInterface) -> str:
     try:
         import daycount
         return daycount.getday()
-    except:
+    except Exception:
         return '?'
 
 
@@ -37,7 +40,8 @@ def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]
     """
     Display MOTD to the user
     """
-    pass
+    reply('§7=======§r Welcome back to §e{}§7 =======§r'.format(config.server_name))
+    reply('The server is running for §e{}§r days'.format(get_day(server)))
 
 
 def on_load(server: PluginServerInterface, old):
@@ -56,5 +60,5 @@ def on_load(server: PluginServerInterface, old):
 
     server.register_help_message(COMMAND_PREFIX, "Show Help Message of joinMOTD-Reforged")
     server.register_command(
-        Literal(COMMAND_PREFIX).runs(lambda src: display_motd(src.get_server(), src.reply))
+        Literal(MOTD_PREFIX).runs(lambda src: display_motd(src.get_server(), src.reply))
     )
