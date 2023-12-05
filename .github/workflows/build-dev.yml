@@ -1,0 +1,23 @@
+name: Build dev version artifacts
+on: [ pull_request, push ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Python version
+        run: python --version
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+      - name: Pack MCDR Plugin
+        run: python3 pack.py
+      - name: Get short SHA
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: joinMOTD-Reforged-${{ env.SHORT_SHA }}
+          path: build/distributions
