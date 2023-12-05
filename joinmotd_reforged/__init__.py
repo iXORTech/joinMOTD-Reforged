@@ -106,3 +106,7 @@ def on_load(server: PluginServerInterface, old):
     elif "Release Candidate" in plugin_version:
         server.logger.info("§eTHIS IS A RELEASE CANDIDATE, PLEASE REPORT BUGS TO THE AUTHOR!")
     server.logger.info("==========================================================")
+
+
+def on_player_joined(server: ServerInterface, player, info):
+    display_motd(server, lambda msg: server.tell(player, msg))
