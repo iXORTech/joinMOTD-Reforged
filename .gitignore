@@ -1,6 +1,11 @@
 # IntelliJ Platform
 .idea/
 
-# Built Files
+# MCDR Packed Plugin
 *.mcdr
 
+# macOS File System
+.DS_Store
+
+# Version Properties Files
+version.*
