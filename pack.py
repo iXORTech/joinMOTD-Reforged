@@ -27,7 +27,7 @@ with open(version_properties_file, "w") as f:
 project_dir = os.getcwd()
 
 pack_version_string: str
-if stage == "dev" or stage == "alpha" or stage == "beta" or stage == "rc":
+if stage.startswith("dev") or stage.startswith("alpha") or stage.startswith("beta") or stage.startswith("rc"):
     pack_version_string = f"v{version}-{stage}+{revision}"
 else:
     pack_version_string = f"v{version}+{revision}"
