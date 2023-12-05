@@ -14,6 +14,11 @@ config: Config
 ConfigFilePath = os.path.join('config', 'joinMOTD-Reforged.json')
 
 
+def load_config(server: PluginServerInterface):
+    global config
+    config = server.load_config_simple(file_name=ConfigFilePath, in_data_folder=False, target_class=Config)
+
+
 def get_day(server: ServerInterface) -> str:
     try:
         startday = datetime.strptime(config.start_day, '%Y-%m-%d')
@@ -54,20 +59,30 @@ def register_commands(server: PluginServerInterface):
     """
     Register commands to the server
     """
+
+    def get_literal_node(literal):
+        lvl = config.permission.get(literal, 0)
+        return Literal(literal).requires(
+            lambda src: src.has_permission(lvl),
+            lambda: "§cYou don't have permission to use this command!"
+        )
+
     server.register_help_message(MOTD_PREFIX, '[joinMOTD-Reforged] Show Message of the Day')
+    server.register_help_message(f"{MOTD_PREFIX} reload", '[joinMOTD-Reforged] Reload MOTD config')
     server.register_help_message(SERVER_LIST_PREFIX, '[joinMOTD-Reforged] Show Server List')
+
     server.register_command(
-        Literal(MOTD_PREFIX).runs(lambda src: display_motd(src.get_server(), src.reply))
+        get_literal_node(MOTD_PREFIX)
+        .runs(lambda src: display_motd(src.get_server(), src.reply))
+        .then(get_literal_node('reload').runs(load_config))
     )
     server.register_command(
-        Literal(SERVER_LIST_PREFIX).runs(lambda src: display_server_list(src.get_server(), src.reply))
+        get_literal_node(SERVER_LIST_PREFIX).runs(lambda src: display_server_list(src.get_server(), src.reply))
     )
 
 
 def on_load(server: PluginServerInterface, old):
-    global config
-    config = server.load_config_simple(file_name=ConfigFilePath, in_data_folder=False, target_class=Config)
-
+    load_config(server)
     register_commands(server)
 
     server.logger.info("==========================================================")
