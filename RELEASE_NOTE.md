@@ -8,7 +8,7 @@ Template for changes, <mandatory> [optional]
 
 ------
 
-# "The First Beta"
+# Version Check Fix
 
 :bangbang: This version **MIGHT NOT** represent all the features in the final production/official version! :bangbang:
 
@@ -18,11 +18,7 @@ Template for changes, <mandatory> [optional]
 
 ## New features
 
-- Add `!!motd` command to show the MOTD and the server list.
-- Add `!!motd reload` command to reload the config file.
-- Add `!!server` to show the server list.
-- Show automatically the MOTD and the server list when a player joins the server.
-- Add permission configuration for commands.
+`There is nothing to display yet.`
 
 ## Improvements
 
@@ -30,15 +26,15 @@ Template for changes, <mandatory> [optional]
 
 ## Bug fixes
 
-`There is nothing to display yet.`
+- The plugin will now get the correct build version from data file.
 
 ## Known Bugs
 
-- This version is **yet to be tested**.
+`There is nothing to display yet.`
 
 ------
 
-# "首个 Beta 版本"
+# 版本检查修复
 
 :bangbang: 该版本 **可能不会** 代表在生产/正式版本中的所有功能！ :bangbang:
 
@@ -48,11 +44,7 @@ Template for changes, <mandatory> [optional]
 
 ## 新增功能
 
-- 添加 `!!motd` 命令以显示 MOTD 和服务器列表。
-- 添加 `!!motd reload` 命令以重新加载配置文件。
-- 添加 `!!server` 命令以显示服务器列表。
-- 玩家加入服务器时自动显示 MOTD 和服务器列表。
-- 为命令添加权限配置。
+`暂时没有可以显示的内容`
 
 ## 优化与改进
 
@@ -60,13 +52,13 @@ Template for changes, <mandatory> [optional]
 
 ## 错误修复
 
-`暂时没有可以显示的内容`
+- 插件现在可以从数据文件中获取正确的构建版本。
 
 ## 已知错误
 
-- 该版本**尚未经过测试**。
+`暂时没有可以显示的内容`
 
 ------
 
-**Full Changelog**: https://github.com/iXORTech/joinMOTD-Reforged/commits/v1.0.0-beta
-**完整的更新日志**: https://github.com/iXORTech/joinMOTD-Reforged/commits/v1.0.0-beta
+**Full Changelog**: https://github.com/iXORTech/joinMOTD-Reforged/compare/v1.0.0-beta...v1.0.0-beta.1
+**完整的更新日志**: https://github.com/iXORTech/joinMOTD-Reforged/compare/v1.0.0-beta...v1.0.0-beta.1
