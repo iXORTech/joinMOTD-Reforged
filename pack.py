@@ -26,18 +26,13 @@ with open(version_properties_file, "w") as f:
 
 project_dir = os.getcwd()
 
-os.chdir(f"{project_dir}")
-os.system("mcdreforged pack -o build/distributions --ignore-file .mcdrignore")
-
-os.chdir(f"{project_dir}/build/distributions")
+pack_version_string: str
 if stage == "dev" or stage == "alpha" or stage == "beta" or stage == "rc":
-    os.rename(
-        f"JoinMOTDReforged-v{version}-{stage}.mcdr",
-        f"joinMOTD-Reforged-v{version}-{stage}+{revision}.mcdr"
-    )
+    pack_version_string = f"v{version}-{stage}+{revision}"
 else:
-    os.rename(
-        f"JoinMOTDReforged-v{version}.mcdr",
-        f"joinMOTD-Reforged-v{version}+{revision}.mcdr"
-    )
+    pack_version_string = f"v{version}+{revision}"
+
+os.chdir(f"{project_dir}")
+os.system(f"mcdreforged pack --output build/distributions "
+          f"--name joinMOTD-Reforged-{pack_version_string}.mcdr --ignore-file .mcdrignore")
     
