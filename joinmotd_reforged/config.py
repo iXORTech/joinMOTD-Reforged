@@ -14,9 +14,9 @@ class Config(Serializable):
 
     # The default config values.
 
-    serverName: str = "Minecraft Server"
-    currentServerName: str = "Survival Server"
-    serverList: List[Union[str, ServerInfo]] = [
+    server_name: str = "Minecraft Server"
+    current_server_name: str = "Survival Server"
+    server_list: List[Union[str, ServerInfo]] = [
         ServerInfo(name="survival", description="Survival Server"),
         ServerInfo(name="creative", description="Creative Server"),
         ServerInfo(name="mirror", description="Mirror Server")
