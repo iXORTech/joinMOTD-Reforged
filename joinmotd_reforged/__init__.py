@@ -7,7 +7,6 @@ from datetime import datetime
 from joinmotd_reforged.config import Config
 from joinmotd_reforged.utils.version_utils import get_version
 
-COMMAND_PREFIX = '!!joinMOTD'
 MOTD_PREFIX = '!!motd'
 SERVER_LIST_PREFIX = '!!server'
 
@@ -44,9 +43,32 @@ def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]
     reply('The server is running for §e{}§r days'.format(get_day(server)))
 
 
+def display_server_list(server: ServerInterface, reply: Callable[[Union[str, RTextBase]], Any]):
+    """
+    Display Server List to the user
+    """
+    pass
+
+
+def register_commands(server: PluginServerInterface):
+    """
+    Register commands to the server
+    """
+    server.register_help_message(MOTD_PREFIX, '[joinMOTD-Reforged] Show Message of the Day')
+    server.register_help_message(SERVER_LIST_PREFIX, '[joinMOTD-Reforged] Show Server List')
+    server.register_command(
+        Literal(MOTD_PREFIX).runs(lambda src: display_motd(src.get_server(), src.reply))
+    )
+    server.register_command(
+        Literal(SERVER_LIST_PREFIX).runs(lambda src: display_server_list(src.get_server(), src.reply))
+    )
+
+
 def on_load(server: PluginServerInterface, old):
     global config
     config = server.load_config_simple(file_name=ConfigFilePath, in_data_folder=False, target_class=Config)
+
+    register_commands(server)
 
     server.logger.info("==========================================================")
     server.logger.info("joinMOTD-Reforged is loaded!")
@@ -57,8 +79,3 @@ def on_load(server: PluginServerInterface, old):
     elif "Release Candidate" in plugin_version:
         server.logger.info("§eTHIS IS A RELEASE CANDIDATE, PLEASE REPORT BUGS TO THE AUTHOR!")
     server.logger.info("==========================================================")
-
-    server.register_help_message(COMMAND_PREFIX, "Show Help Message of joinMOTD-Reforged")
-    server.register_command(
-        Literal(MOTD_PREFIX).runs(lambda src: display_motd(src.get_server(), src.reply))
-    )
