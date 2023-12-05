@@ -58,7 +58,6 @@ jobs:
       - name: Release
         uses: ncipollo/release-action@v1.13.0
         with:
-          token: ${{ secrets.GH_TOKEN }}
           name: "Version ${{ steps.getversion-rc-no-numeric.outputs.replaced }} (${{ steps.sha.outputs.uppercase }})"
           artifacts: "build/distributions/*.mcdr"
           bodyFile: "RELEASE_NOTE.md"
