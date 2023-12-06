@@ -13,7 +13,7 @@ MOTD_PREFIX = '!!motd'
 SERVER_LIST_PREFIX = '!!server'
 
 config: Config
-ConfigFilePath = os.path.join('config', 'joinMOTD-Reforged.json')
+ConfigFilePath = os.path.join('config', 'joinmotd_reforged', 'config.json')
 
 
 def load_config(server: PluginServerInterface):
