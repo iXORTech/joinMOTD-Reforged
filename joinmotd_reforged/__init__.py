@@ -25,7 +25,7 @@ def get_day(server: ServerInterface) -> str:
     api = server.get_plugin_instance(DAYCOUNT_PLUGIN_ID)
     if hasattr(api, 'getday') and callable(api.getday):
         return api.getday()
-    return 'Unable to get day count from daycount_nbt plugin.'
+    return '[Unable to get day count from daycount_nbt plugin.]'
 
 
 def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]], Any], player=None):
