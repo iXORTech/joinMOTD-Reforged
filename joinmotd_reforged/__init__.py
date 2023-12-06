@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 from typing import Any, Callable, Union
 
 from mcdreforged.api.all import *
@@ -7,6 +6,8 @@ from mcdreforged.api.all import *
 from joinmotd_reforged.config import Config
 from joinmotd_reforged.server_info import ServerInfo
 from joinmotd_reforged.utils.version_utils import get_version, get_build_date
+
+DAYCOUNT_PLUGIN_ID = "daycount_nbt"
 
 MOTD_PREFIX = '!!motd'
 SERVER_LIST_PREFIX = '!!server'
@@ -21,24 +22,10 @@ def load_config(server: PluginServerInterface):
 
 
 def get_day(server: ServerInterface) -> str:
-    try:
-        startday = datetime.strptime(config.start_day, '%Y-%m-%d')
-        now = datetime.now()
-        output = now - startday
-        return str(output.days)
-    except Exception:
-        pass
-
-    daycount_plugin_id = "daycount_nbt"
-    api = server.get_plugin_instance(daycount_plugin_id)
+    api = server.get_plugin_instance(DAYCOUNT_PLUGIN_ID)
     if hasattr(api, 'getday') and callable(api.getday):
         return api.getday()
-
-    try:
-        import daycount
-        return daycount.getday()
-    except Exception:
-        return '?'
+    return 'Unable to get day count from daycount_nbt plugin.'
 
 
 def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]], Any], player=None):

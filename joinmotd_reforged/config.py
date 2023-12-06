@@ -27,5 +27,3 @@ class Config(Serializable):
         'server': 0,
         'reload': 3
     }
-
-    start_day: Optional[str] = None
