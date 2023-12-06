@@ -33,7 +33,8 @@ def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]
     Display MOTD to the user
     """
     player = player if player else 'Console'
-    reply('§7=======§r §6{}§r, welcome back to §9{}§r! §7=======§r'.format(player, config.current_server_name))
+    reply('§7=======§r §6{}§r, welcome back to §b§l{}§r! §7=======§r'.format(player, config.server_name))
+    reply('Current Connected Server: §3§n{}§r'.format(config.current_server_name))
     reply('The server is running for §e{}§r days'.format(get_day(server)))
     display_server_list(reply)
 
