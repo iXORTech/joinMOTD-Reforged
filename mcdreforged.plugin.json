@@ -12,7 +12,8 @@
 	],
 	"link": "https://github.com/iXORTech/joinMOTD-Reforged",
 	"dependencies": {
-        "mcdreforged": ">=2.10.0"
+        "mcdreforged": ">=2.10.0",
+		"daycount_nbt": "^2.2.1"
     },
     "resources": [
 		"version.json"
