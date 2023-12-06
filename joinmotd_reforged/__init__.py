@@ -29,10 +29,10 @@ def get_day(server: ServerInterface) -> str:
     except Exception:
         pass
 
-    for pid in config.daycount_plugin_ids:
-        api = server.get_plugin_instance(pid)
-        if hasattr(api, 'getday') and callable(api.getday):
-            return api.getday()
+    daycount_plugin_id = "daycount_nbt"
+    api = server.get_plugin_instance(daycount_plugin_id)
+    if hasattr(api, 'getday') and callable(api.getday):
+        return api.getday()
 
     try:
         import daycount

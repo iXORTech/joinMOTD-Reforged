@@ -29,8 +29,3 @@ class Config(Serializable):
     }
 
     start_day: Optional[str] = None
-    daycount_plugin_ids: List[str] = [
-        'mcd_daycount',
-        'day_count_reforged',
-        'daycount_nbt'
-    ]
