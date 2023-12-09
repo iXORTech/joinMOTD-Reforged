@@ -5,6 +5,7 @@ from mcdreforged.api.all import *
 
 from joinmotd_reforged.config import Config
 from joinmotd_reforged.server_info import ServerInfo
+from joinmotd_reforged.utils.i18n_utils import i18n
 from joinmotd_reforged.utils.version_utils import get_version, get_build_date
 
 DAYCOUNT_PLUGIN_ID = "daycount_nbt"
