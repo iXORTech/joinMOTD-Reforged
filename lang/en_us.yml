@@ -1,0 +1,26 @@
+joinmotd_reforged:
+  locale: 'en_us'
+  console: 'Console'
+
+  version: 'Version: {0} (Built on {1})'
+  experimental_warning: '§cTHIS IS IN EXPERIMENTAL STAGE, DO NOT USE IN PRODUCTION ENVIRONMENT!'
+  release_candidate_warning: '§cTHIS IS A RELEASE CANDIDATE, DO NOT USE IN PRODUCTION ENVIRONMENT!'
+
+  loaded: 'joinMOTD-Reforged is loaded!'
+
+  command:
+    no_permission: '§cYou don''t have permission to use this command!'
+    help_msg:
+      motd: '[joinMOTD-Reforged] Show Message of the Day'
+      reload: '[joinMOTD-Reforged] Reload MOTD config'
+      server: '[joinMOTD-Reforged] Show server info'
+
+  motd:
+    welcome: '§7=======§r §6{0}§r, welcome back to §b§l{1}§r! §7=======§r'
+    current_server: 'Currently Connected Server: §3§n{0}§r'
+    day_count: 'The server is running for §e{0}§r days'
+
+  server_list: '§7-----------------§r Server List §7-----------------§r'
+
+  error_msg:
+    unable_to_get_day_count: '[unable to get day count from daycount_nbt plugin]'

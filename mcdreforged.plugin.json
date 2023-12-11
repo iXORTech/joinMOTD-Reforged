@@ -16,6 +16,7 @@
 		"daycount_nbt": "^2.2.1"
     },
     "resources": [
-		"version.json"
+		"version.json",
+		"lang"
 	]
 }

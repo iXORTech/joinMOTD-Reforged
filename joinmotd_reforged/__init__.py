@@ -26,17 +26,17 @@ def get_day(server: ServerInterface) -> str:
     api = server.get_plugin_instance(DAYCOUNT_PLUGIN_ID)
     if hasattr(api, 'getday') and callable(api.getday):
         return api.getday()
-    return '[Unable to get day count from daycount_nbt plugin.]'
+    return i18n('error_msg.unable_to_get_day_count')
 
 
 def display_motd(server: ServerInterface, reply: Callable[[Union[str, RTextBase]], Any], player=None):
     """
     Display MOTD to the user
     """
-    player = player if player else 'Console'
-    reply('§7=======§r §6{}§r, welcome back to §b§l{}§r! §7=======§r'.format(player, config.server_name))
-    reply('Current Connected Server: §3§n{}§r'.format(config.current_server_name))
-    reply('The server is running for §e{}§r days'.format(get_day(server)))
+    player = player if player else i18n('console')
+    reply(i18n('motd.welcome', player, config.server_name))
+    reply(i18n('motd.current_server', config.current_server_name))
+    reply(i18n('motd.day_count', get_day(server)))
     display_server_list(reply)
 
 
@@ -44,7 +44,7 @@ def display_server_list(reply: Callable[[Union[str, RTextBase]], Any]):
     """
     Display Server List to the user
     """
-    reply('§7-----------------§r Server List §7-----------------§r')
+    reply(i18n('server_list'))
 
     messages = []
     for server in config.server_list:
@@ -65,12 +65,12 @@ def register_commands(server: PluginServerInterface):
         lvl = config.permission.get(literal, 0)
         return Literal(literal).requires(
             lambda src: src.has_permission(lvl),
-            lambda: "§cYou don't have permission to use this command!"
+            lambda: i18n('command.no_permission')
         )
 
-    server.register_help_message(MOTD_PREFIX, '[joinMOTD-Reforged] Show Message of the Day')
-    server.register_help_message(f"{MOTD_PREFIX} reload", '[joinMOTD-Reforged] Reload MOTD config')
-    server.register_help_message(SERVER_LIST_PREFIX, '[joinMOTD-Reforged] Show Server List')
+    server.register_help_message(MOTD_PREFIX, i18n('command.help_msg.motd'))
+    server.register_help_message(f"{MOTD_PREFIX} reload", i18n('command.help_msg.reload'))
+    server.register_help_message(SERVER_LIST_PREFIX, i18n('command.help_msg.server'))
 
     server.register_command(
         get_literal_node(MOTD_PREFIX)
@@ -87,14 +87,14 @@ def on_load(server: PluginServerInterface, old):
     register_commands(server)
 
     server.logger.info("==========================================================")
-    server.logger.info("joinMOTD-Reforged is loaded!")
+    server.logger.info(i18n('loaded'))
     plugin_version = get_version()
-    plugin_build_date = get_build_date()
-    server.logger.info(f"Version: {plugin_version} (Built on {plugin_build_date})")
+    plugin_build_date = get_build_date(i18n('locale'))
+    server.logger.info(i18n('version', plugin_version, plugin_build_date))
     if "DEV" in plugin_version or "Alpha" in plugin_version or "Beta" in plugin_version:
-        server.logger.info("§cTHIS IS IN EXPERIMENTAL STAGE, DO NOT USE IN PRODUCTION ENVIRONMENT!")
+        server.logger.info(i18n('experimental_warning'))
     elif "Release Candidate" in plugin_version:
-        server.logger.info("§eTHIS IS A RELEASE CANDIDATE, PLEASE REPORT BUGS TO THE AUTHOR!")
+        server.logger.info(i18n('release_candidate_warning'))
     server.logger.info("==========================================================")
 
 
