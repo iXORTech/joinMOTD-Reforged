@@ -8,13 +8,17 @@ revision: str
 with os.popen("git rev-parse --short=7 HEAD") as f:
     revision = f.readline().strip()
 
-build_date = datetime.today().strftime("%a., %B %d %Y")
+build_date_en_us = datetime.today().strftime("%a., %B %d %Y")
+build_date_zh_cn = datetime.today().strftime("%Y年%m月%d日")
 
 version_properties = {
     "version": version,
     "stage": stage,
     "revision": revision,
-    "build_date": build_date
+    "build_date": {
+        "en_us": build_date_en_us,
+        "zh_cn": build_date_zh_cn
+    }
 }
 
 version_properties_obj = json.dumps(version_properties)

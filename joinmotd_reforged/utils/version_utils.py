@@ -34,5 +34,5 @@ def get_version() -> str:
     return version_property
 
 
-def get_build_date() -> str:
-    return get_version_property("build_date")
+def get_build_date(locale: str) -> str:
+    return load_version_properties()["build_date"][locale]
