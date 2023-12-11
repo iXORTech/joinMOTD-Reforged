@@ -1,0 +1,26 @@
+joinmotd_reforged:
+  locale: 'zh_cn'
+  console: '控制台'
+
+  version: '版本：{0}（构建于{1}）'
+  experimental_warning: '§c这是一个实验性版本，请勿在生产环境中使用！'
+  release_candidate_warning: '§c这是一个候选版本，请勿在生产环境中使用！'
+
+  loaded: 'joinMOTD-Reforged 已加载！'
+
+  command:
+    no_permission: '§c你没有权限使用该命令！'
+    help_msg:
+      motd: '[joinMOTD-Reforged] 显示欢迎信息'
+      reload: '[joinMOTD-Reforged] 重载欢迎信息配置'
+      server: '[joinMOTD-Reforged] 显示服务器列表'
+
+  motd:
+    welcome: '§7==========§r §6{0}§r，欢迎回到 §b§l{1}§r！ §7==========§r'
+    current_server: '当前连接的服务器：§3§n{0}§r'
+    day_count: '服务器已运行 §e{0}§r 天'
+
+  server_list: '§7-----------------§r 服务器列表 §7-----------------§r'
+
+  error_msg:
+    unable_to_get_day_count: '[无法从 daycount_nbt 插件获取服务器运行天数]'

@@ -13,7 +13,7 @@ joinmotd_reforged:
     help_msg:
       motd: '[joinMOTD-Reforged] Show Message of the Day'
       reload: '[joinMOTD-Reforged] Reload MOTD config'
-      server: '[joinMOTD-Reforged] Show server info'
+      server: '[joinMOTD-Reforged] Show server list'
 
   motd:
     welcome: '§7=======§r §6{0}§r, welcome back to §b§l{1}§r! §7=======§r'
