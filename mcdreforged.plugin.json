@@ -1,6 +1,6 @@
 {
 	"id": "joinmotd_reforged",
-	"version": "1.0.0-beta.1",
+	"version": "1.0.0-rc",
 	"name": "Join MOTD Reforged",
 	"description": {
 		"en_us": "Send player a MOTD when he joins",

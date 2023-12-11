@@ -8,7 +8,7 @@ Template for changes, <mandatory> [optional]
 
 ------
 
-# Closing to RC
+# First Release Candidate
 
 :bangbang: This version **MIGHT NOT** represent all the features in the final production/official version! :bangbang:
 
@@ -26,6 +26,7 @@ Template for changes, <mandatory> [optional]
 ## Improvements
 
 - Current Connected Server's name is now shown in the MOTD.
+- i18n support is now added. (Currently only English and Simplified Chinese are supported)
 
 ## Bug fixes
 
@@ -37,7 +38,7 @@ Template for changes, <mandatory> [optional]
 
 ------
 
-# 接近 RC 版本
+# 第一个正式候选版
 
 :bangbang: 该版本 **可能不会** 代表在生产/正式版本中的所有功能！ :bangbang:
 
@@ -55,6 +56,7 @@ Template for changes, <mandatory> [optional]
 ## 优化与改进
 
 - 现在 MOTD 中会显示当前连接的服务器名称。
+- 支持国际化。 (目前仅支持英语和简体中文)
 
 ## 错误修复
 
@@ -66,5 +68,5 @@ Template for changes, <mandatory> [optional]
 
 ------
 
-**Full Changelog**: https://github.com/iXORTech/joinMOTD-Reforged/compare/
-**完整的更新日志**: https://github.com/iXORTech/joinMOTD-Reforged/compare/
+**Full Changelog**: https://github.com/iXORTech/joinMOTD-Reforged/compare/v1.0.0-beta.1...v1.0.0-rc
+**完整的更新日志**: https://github.com/iXORTech/joinMOTD-Reforged/compare/v1.0.0-beta.1...v1.0.0-rc
