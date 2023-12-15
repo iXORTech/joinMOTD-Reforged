@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 
 version = "1.0.0"
-stage = "rc"
+stage = "rc.1"
 revision: str
 with os.popen("git rev-parse --short=7 HEAD") as f:
     revision = f.readline().strip()
