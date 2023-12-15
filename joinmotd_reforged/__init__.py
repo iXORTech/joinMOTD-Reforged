@@ -99,4 +99,4 @@ def on_load(server: PluginServerInterface, old):
 
 
 def on_player_joined(server: ServerInterface, player, info):
-    display_motd(server, lambda msg: server.tell(player, msg))
+    display_motd(server, lambda msg: server.tell(player, msg), player)
