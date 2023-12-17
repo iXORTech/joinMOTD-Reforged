@@ -3,22 +3,30 @@ Template for changes, <mandatory> [optional]
 - <New feature/Improvements/Bug fix> - [(Pull Request Number) \[@GitHubUsername\]]
 -->
 
-**:warning: THIS IS IN EXPERIMENTAL STAGE, DO NOT USE IN PRODUCTION ENVIRONMENT!**
-**:warning: 该软件仍在实验阶段，请不要用于生产环境！**
-
 ------
 
-# Fix username display
+# The First Official Release
 
-:bangbang: This version **MIGHT NOT** represent all the features in the final production/official version! :bangbang:
+> [!NOTE]
+> This version is identical compared to the `v1.0.0-rc.1` version code and feature wise,
+> and the only difference is that the version number has been changed to `v1.0.0`.
+> However, it is still recommended to update to this official version.
 
-## :warning: BREAKING CHANGES :warning:
+## BREAKING CHANGES
 
 `There is nothing to display yet.`
 
 ## New features
 
-`There is nothing to display yet.`
+- Add `!!motd` command to show the MOTD and the server list.
+- Add `!!motd reload` command to reload the config file.
+- Add `!!server` to show the server list.
+- Show automatically the MOTD and the server list when a player joins the server.
+- Show the name of the currently connected server in the MOTD.
+- Allow server operators to configure the permissions of the commands.
+- Add i18n support.
+- Add English and Simplified Chinese translations.
+- Use Python library `nbtlib` and MCDR plugin [DayCount NBT (`daycount_nbt`)](https://github.com/alex3236/daycount-NBT) to automatically get the day count of the server.
 
 ## Improvements
 
@@ -26,7 +34,7 @@ Template for changes, <mandatory> [optional]
 
 ## Bug fixes
 
-- Fixes the bug that always display 'Console' as the username in the MOTD welcome message.
+`There is nothing to display yet.`
 
 ## Known Bugs
 
@@ -34,17 +42,28 @@ Template for changes, <mandatory> [optional]
 
 ------
 
-# 修复用户名显示
+# 首个正式版本
 
-:bangbang: 该版本 **可能不会** 代表在生产/正式版本中的所有功能！ :bangbang:
+> [!NOTE]
+> 本版本与 `v1.0.0-rc.1` 版本在代码和功能上完全相同，
+> 唯一的区别是版本号已经被修改为 `v1.0.0`。
+> 但是，我们仍然建议更新到本正式版本。
 
-## :warning: 破坏性变更 :warning:
+## 破坏性变更
 
 `暂时没有可以显示的内容`
 
 ## 新增功能
 
-`暂时没有可以显示的内容`
+- 添加 `!!motd` 命令以显示 MOTD 和服务器列表。
+- 添加 `!!motd reload` 命令以重新加载配置文件。
+- 添加 `!!server` 命令以显示服务器列表。
+- 玩家加入服务器时自动显示 MOTD 和服务器列表。
+- 在 MOTD 中显示当前连接的服务器的名称。
+- 允许服务器管理员配置命令的权限。
+- 添加国际化支持。
+- 添加英文和简体中文翻译。
+- 依赖 Python 库 `nbtlib` 和 MCDR 插件 [DayCount NBT (`daycount_nbt`)](https://github.com/alex3236/daycount-NBT) 来自动获取服务器的开服天数。
 
 ## 优化与改进
 
@@ -52,7 +71,7 @@ Template for changes, <mandatory> [optional]
 
 ## 错误修复
 
-- 修复了 MOTD 欢迎信息中总是显示 '控制台' 作为用户名的错误。
+`暂时没有可以显示的内容`
 
 ## 已知错误
 
@@ -60,5 +79,5 @@ Template for changes, <mandatory> [optional]
 
 ------
 
-**Full Changelog**: https://github.com/iXORTech/joinMOTD-Reforged/compare/v1.0.0-rc...v1.0.0-rc.1
-**完整的更新日志**: https://github.com/iXORTech/joinMOTD-Reforged/compare/v1.0.0-rc...v1.0.0-rc.1
+**Full Changelog**: https://github.com/iXORTech/joinMOTD-Reforged/commits/v1.0.0
+**完整的更新日志**: https://github.com/iXORTech/joinMOTD-Reforged/commits/v1.0.0
